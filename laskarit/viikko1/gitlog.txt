@@ -1,0 +1,116 @@
+commit 088b1ceb6e34952474658ad93604be488160b20f
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 21:14:44 2023 +0200
+
+    file1 poisto ja file2 uus nimi on file22
+
+ hakemisto/file2.txt                 | 0
+ hakemisto/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 77908826aeb61fdbe8634bc601f9701a2da1ec37
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 21:08:10 2023 +0200
+
+    tiedostojen lisäys .txt muodossa
+
+ hakemisto/file1.txt | 0
+ hakemisto/file2.txt | 0
+ hakemisto/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1e1f4fd50eb38a31f9a0fa3a226640dd76347b90
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 21:06:35 2023 +0200
+
+    tiedostojen poisto
+
+ hakemisto/file1 | 0
+ hakemisto/file2 | 0
+ hakemisto/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 531e98c87c1a02468df4935bb2fd5cf802f61f4d
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 21:03:25 2023 +0200
+
+    kolme tiedostoa
+
+ hakemisto/file1 | 0
+ hakemisto/file2 | 0
+ hakemisto/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 7b721100b31f31d7347af3402f6caaf7dfa12e7c
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 20:49:15 2023 +0200
+
+    tehtava 9 git add -p komennon käyttö
+
+ eka.txt    | 21 +++++++++++++++++----
+ kolmas.txt |  3 +++
+ 2 files changed, 20 insertions(+), 4 deletions(-)
+
+commit 647c398d463010567fdfadeee84e01b4f9c2fc3b
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 20:37:54 2023 +0200
+
+    tiedosto nimetty uudelleen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit aee8b8e52b8be2ecf8acc350937bdc97d4a86b29
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 17:29:03 2023 +0200
+
+    tiedoston 'toinen.txt' poisto
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ed0aaa4fbcecfb10211f280d67bc89d944db6048
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 17:22:51 2023 +0200
+
+    lisattiin paljon tekstia tiedostoon tiedosto.txt
+
+ tiedosto.txt | 78 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 76 insertions(+), 2 deletions(-)
+
+commit c7983b9bd358ef3ebab0df6ef46316772f6cc85d
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 16:06:31 2023 +0200
+
+    hakemiston stuff lisays
+
+ stuff/stuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 911d49de01f32420b1b381147506179e7c8b4e16
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 16:04:09 2023 +0200
+
+    lisataan kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit dfc1ad4ac4e4aa2d2f2628986dcb927658fd695f
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 15:37:52 2023 +0200
+
+    muutos ja lisays
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 0
+ 2 files changed, 2 insertions(+)
+
+commit 3aa187adbb95780fab2e9a0bf35912bd8920e885
+Author: pakkanep <patrikpakkanen9@gmail.com>
+Date:   Mon Mar 20 15:33:00 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
