@@ -1,6 +1,9 @@
-Tämä on otsikko
+# Ohjelmistotekniikka, harjoitustyö
 
-Tässä on normaalia tekstiä, *sitten on kursivoitua tekstiä* **ja viimeiseksi lihavoitua tekstiä**.
+## Tehtävät
 
-***kirjoitetaan vielä rivi tekstiä, joka on sekä lihavoitua että kursivoitua***
+### viikko 1
+
 [gitlog.txt](https://github.com/pakkanep/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+
+[komentorivi.txt](https://github.com/pakkanep/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
