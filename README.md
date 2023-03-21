@@ -1,5 +1,4 @@
 # Ohjelmistotekniikka, harjoitustyö
-muutos
 
 ## Tehtävät
 
