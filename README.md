@@ -11,4 +11,4 @@
 
 ### viikko 2
 
-[testi.txt](https://github.com/pakkanep/ot-harjoitustyo/blob/master/laskarit/viikko2/testi.txt) (tyhja)
+(tyhja)
