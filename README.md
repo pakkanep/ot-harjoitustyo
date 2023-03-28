@@ -3,7 +3,7 @@
 ## Tehtävät
 
 ### Dokumentaatio
-[vaatimusmäärittely]()
+[vaatimusmäärittely](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.txt)
 
 ### viikko 1
 
