@@ -11,4 +11,4 @@
 
 ### viikko 2
 
-(tyhja)
+[viikko2/maksukortti](https://github.com/pakkanep/ot-harjoitustyo/tree/master/laskarit/viikko2/maksukortti)
