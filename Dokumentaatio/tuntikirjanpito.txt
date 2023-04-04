@@ -6,5 +6,6 @@ Hours:
 5h trying to find the right information from the websites in with the module.
 5h modifying the form of outcome the methods returns.
 2h learnig and testing Tkinter.
-2h working on an simple text based UI 
+2h working on an simple text based UI
+2h working on an simple text based UI
 
