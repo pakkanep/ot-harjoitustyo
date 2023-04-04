@@ -17,3 +17,5 @@
 ### viikko 2
 
 [Testikattavuus](https://github.com/pakkanep/ot-harjoitustyo/blob/master/laskarit/viikko2/Screenshot%20from%202023-03-28%2023-26-49.png)
+
+### viikko 3
