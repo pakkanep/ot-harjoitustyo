@@ -12,7 +12,10 @@
 
   - [requests](https://pypi.org/project/requests/)
 
-- Pakettien asennus pitäisi onnistua ajamalla komentorivillä komento: "pip install paketti"
+- Pakettien asennus pitäisi onnistua ajamalla komentorivillä komennot: 
+
+      pip install beautifulsoup4
+      pip install requests
 
 - Ohjelman käynnistys onnistuu suorittamalla [index.py](https://github.com/pakkanep/ot-harjoitustyo/blob/master/src/index.py) hakemiston [src](https://github.com/pakkanep/ot-harjoitustyo/tree/master/src) sisällä.
 
