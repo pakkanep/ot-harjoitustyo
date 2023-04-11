@@ -1,9 +1,9 @@
 #import UserInterface
 #from tkinter import Tk
-from text_based_ui import suorita
+from text_based_ui import execute
 
 def main():
-    suorita()
+    execute()
 
 if __name__ == "__main__":
     main()

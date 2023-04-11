@@ -1,7 +1,9 @@
-from infoseeker import pass_url
+from infoseeker import InfoSeeker
 from diagramcreator import create
 
-def suorita():
+test_object = InfoSeeker()
+
+def execute():
     print("Suorita komento syötämällä ohjelmalle jokin alla olevista numeroista:")
     print("1: Suorita haku")
     print("2: Näytä kaavio hakutuloksista")
@@ -10,7 +12,7 @@ def suorita():
     while True:
         syote = input("Syötä numero: ")
         if syote == "1":
-            result = pass_url()
+            result = test_object.pass_url()
             print("Haku suoritettu")
 
         if syote == "2":

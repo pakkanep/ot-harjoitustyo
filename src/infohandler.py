@@ -55,10 +55,11 @@ class InfoHandler:
             "Node.js": 0
         }
         for a, b in default_dict.items():
+            validword = a+" "
             if text.find(a) != None:
                 alku = text.find(a)
 
-                if a == text[alku:alku+len(a)] and b == 0:
+                if validword == text[alku:alku+len(a)+1] and b == 0:
                     default_dict[a]+=1
         
         return default_dict

@@ -10,3 +10,4 @@ def create(prog_languages: dict):
         cur = "|"*pros
         print(f"{a:<10}{cur:<40}{pros}%")
 
+#muista korjata mahdollinen nollalla jako ongelma!!
