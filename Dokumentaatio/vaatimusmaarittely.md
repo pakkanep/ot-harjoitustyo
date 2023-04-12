@@ -6,6 +6,10 @@ Harjoitustyön tavoitteena olisi saada aikaseksi sovellus, jonka avulla käyttä
 vaatimuksia/toiveita ohjelmointiin liittyvissä työpaikkailmoituksissa on listattu Duunitori.fi:n sivuilla. Haun jälkeen ohjelma 
 voisi muodostaa esimerkiksi pylväskaavion hakutuloksista.
 
+## Käyttäjät
+
+Sovelluksella on vain yksi käyttäjämuoto ilman minkäänlaisia rajoitteita.
+
 
 ## Toiminnallisuus
 
@@ -19,7 +23,7 @@ Tuloksessa voisi näkyä myös kuinka monta työpaikkailmoitusta haun aikana kä
 
 
 
-## Kehitysideoita
+### Kehitysideoita
 
 -Hakutulokset voisi tallentaa tietokantaan, jonka avulla myös vanhojen hakujen tuloksia
 voisi halutessa katsella.
