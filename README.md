@@ -1,9 +1,9 @@
 # Ohjelmistotekniikka, harjoitustyö
 
 ### Dokumentaatio
-- [vaatimusmäärittely](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.txt)
+- [vaatimusmäärittely](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.md)
 
-- [tuntikirjanpito](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.txt)
+- [tuntikirjanpito](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
 
 ### Ohjelman testaaminen
 - Sovellus olettaa, että sinulla on seuraavat paketit asennettuna:
