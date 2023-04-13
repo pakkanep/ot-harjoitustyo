@@ -13,4 +13,6 @@
 | 9.4   | 2      | nettisivujen tutkiminen laajempaa kyselyä varten |
 | 10.4  | 2      | laajemman kyselyn kehitys |
 | 11.4  | 2      | testaus|
-| yht   | 30     | | 
+| 12.4  | 2      | laajemman kyselyn ongelmien selvittäminen ja korjaus |
+| 13.4  | 2      | BeautifulSoup dokumentaation lukeminen sekä selvitys, että voiko kyselyn suorittaa järkevämmin |
+| yht   | 34     | | 
