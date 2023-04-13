@@ -5,6 +5,8 @@
 
 - [tuntikirjanpito](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
 
+- [changelog](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/changelog.md)
+
 ### Ohjelman testaaminen
 - Sovellus olettaa, että sinulla on seuraavat paketit asennettuna:
 
