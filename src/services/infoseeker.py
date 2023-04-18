@@ -41,40 +41,37 @@ class InfoSeeker:
 
 
     def search_links(self, url):
-        result = requests.get(url, timeout=(10, 10))
-        doc = BeautifulSoup(result.text, "html.parser")
-
-        try:
+        try:    
+            result = requests.get(url, timeout=(10, 10))
+            doc = BeautifulSoup(result.text, "html.parser")
             for link in doc.find_all(class_="job-box__hover gtm-search-result"):
                 site_url = "https://duunitori.fi"+link.get('href')
                 self.handle(site_url)
 
-        except (ValueError, IndexError, AttributeError):
+        except (TimeoutError, ValueError, IndexError, AttributeError):
             print("Ongelma linkkien haussa")
 
     def search_amount_of_ads(self, url):
-        result = requests.get(url, timeout=(10, 10))
-        doc = BeautifulSoup(result.text, "html.parser")
-
         try:
+            result = requests.get(url, timeout=(10, 10))
+            doc = BeautifulSoup(result.text, "html.parser")
             tags = (doc.find_all(
                 class_="m-b-10-on-all text--body text--left text--center-desk"))
             return int(tags[0].b.text)
 
-        except (ValueError, IndexError, AttributeError):
+        except (TimeoutError, ValueError, IndexError, AttributeError):
             print("Ongelma hakemuksien määrän hakemisessa")
             return None
 
     def search_amount_of_pages(self, url):
-        result = requests.get(url, timeout=(10, 10))
-        doc = BeautifulSoup(result.text, "html.parser")
-
         try:
+            result = requests.get(url, timeout=(10, 10))
+            doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="pagination__pagenum")
             amount = int(tags[-1].text)
             return amount
 
-        except (ValueError, IndexError, AttributeError):
+        except (TimeoutError, ValueError, IndexError, AttributeError):
             print("Ongelma sivujen määrän hakemisessa")
             return None
 
@@ -86,10 +83,9 @@ class InfoSeeker:
             self.successful_page_handles += 1
 
     def handle(self, url):
-        result = requests.get(url, timeout=(10,10))
-        doc = BeautifulSoup(result.text, "html.parser")
-
         try:
+            result = requests.get(url, timeout=(10,10))
+            doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="description-box")
             description = tags[0].text
             self.search_instances(description)
@@ -98,7 +94,7 @@ class InfoSeeker:
                 f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} \
                 Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
-        except (ValueError, IndexError, AttributeError):
+        except (TimeoutError, ValueError, IndexError, AttributeError):
             self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
 
