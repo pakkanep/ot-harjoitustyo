@@ -15,4 +15,8 @@
 | 11.4  | 2      | testaus|
 | 12.4  | 2      | laajemman kyselyn ongelmien selvittäminen ja korjaus |
 | 13.4  | 2      | BeautifulSoup dokumentaation lukeminen sekä selvitys, että voiko kyselyn suorittaa järkevämmin |
-| yht   | 34     | | 
+| 14.4  | 4      | uuden kyselyn kehitys |
+| 15.4  | 4      | uuden kyselyn testaaminen ja korjailu |
+| 17.4  | 6      | kahden luokan yhdistäminen ja testailu sekä käyttöliittymän tekeminen |
+| 18.4  | 4      | käyttöliittymän testailu |
+| yht   | 52     | |
