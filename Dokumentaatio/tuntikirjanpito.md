@@ -18,5 +18,5 @@
 | 14.4  | 4      | uuden kyselyn kehitys |
 | 15.4  | 4      | uuden kyselyn testaaminen ja korjailu |
 | 17.4  | 6      | kahden luokan yhdistäminen ja testailu sekä käyttöliittymän tekeminen |
-| 18.4  | 4      | käyttöliittymän testailu |
-| yht   | 52     | |
+| 18.4  | 7      | käyttöliittymän testailu yms muu säätö ja sälän lisäily |
+| yht   | 55     | |
