@@ -83,7 +83,6 @@ class InfoSeeker:
         self.amount_ads = self.search_amount_of_ads(url)
         print(self.amount_ads, self.amount_pages)
         for pagenum in range(1, self.amount_pages+1):
-            print("sivulla", pagenum)
             self.search_links(url+str(pagenum))
         return
 
@@ -96,13 +95,13 @@ class InfoSeeker:
             description = tags[0].text
             self.search_instances(description)
             self.successful_add_handles += 1
-            print(f"Ilmoituksia käsitelty onnistuneesti {self.successful_add_handles}/{self.amount_ads}")
-            print(f"epäonnistuneet käsittelyt {self.failed_add_handles}/{self.successful_add_handles}")
+            print(f"Sivulla: {self.successful_page_handles}/{self.amount_pages}")
+            print(f"Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
+            print(f"Epäonnistuneet {self.failed_add_handles}/{self.successful_add_handles}")
 
         except ValueError or IndexError or AttributeError:
             self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
-            # print("kasitelty url:", url)
             return
 
     def search_instances(self, text: str):
@@ -134,8 +133,7 @@ class InfoSeeker:
                 if validword == text[alku:alku+len(a)+1] and check_dict[a] == 0:
                     check_dict[a] = 1
                     self.information_dict[a] += 1
-        print(self.information_dict)
-        # return self.information_dict
+        
         return
 
     def start(self):
