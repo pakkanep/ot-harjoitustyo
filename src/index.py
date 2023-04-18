@@ -1,9 +1,17 @@
-#import UserInterface
-#from tkinter import Tk
-from text_based_ui import execute
+from tkinter import Tk
+from ui.ui import UI
+
 
 def main():
-    execute()
+    window = Tk()
+    window.title("Job application search")
+    window.geometry("600x600")
+
+    ui = UI(window)
+    ui.start()
+
+    window.mainloop()
+
 
 if __name__ == "__main__":
     main()

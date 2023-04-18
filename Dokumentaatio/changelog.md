@@ -11,7 +11,14 @@
 
 ## Viikko 4
 - InfoSeeker luokan muokkaus laajempaa kyselyä varten.
-
+- Lisätty laajemmasta kyselystä vastaava luokka nimellä Infoseeker.
+- Laajemman kyselyn luonnissa yhdistetty luokkien InfoHandler ja InfoSeeker toiminnallisuudet yhdeksi luokaksi.
+- Poistettu vanha InfoSeeker luokka.
+- Poistettu tarpeeton InfoHandler luokka.
+- Tkinter käyttöliittymä luotu.
+- Lisätty luokka UI.
+- Lisätty luokka ResultView.
+- Lisätty luokka QueryView.
 ## Viikko 5
 
 ## Viikko 6

@@ -1,7 +1,7 @@
 import unittest
-from infohandler import InfoHandler
+from services.infoseeker import InfoSeeker
 
-class TestInfoHandler(unittest.TestCase):
+class TestInfoSeeker(unittest.TestCase):
 	def setUP(self):
 		print("setup goes here")
 
