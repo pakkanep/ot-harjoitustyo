@@ -7,8 +7,8 @@ def main():
     window.title("Job application search")
     window.geometry("600x600")
 
-    ui = UI(window)
-    ui.start()
+    userinterface= UI(window)
+    userinterface.start()
 
     window.mainloop()
 

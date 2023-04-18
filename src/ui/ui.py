@@ -28,7 +28,6 @@ class UI:
     def _start_query(self):
         self.test.start()
 
-
     def _show_query_view(self):
         self._hide_current_view()
 
@@ -51,5 +50,3 @@ class UI:
         )
 
         self._current_view.pack()
-
-

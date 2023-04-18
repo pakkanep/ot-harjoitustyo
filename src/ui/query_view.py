@@ -32,6 +32,5 @@ class QueryView:
             command=self._handle_result
         )
 
-
         button.grid(row=1, column=0)
         start_button.grid(row=2, column=0)

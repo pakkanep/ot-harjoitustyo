@@ -30,13 +30,12 @@ class ResultView:
         rownum = 5
         for a, b in self._information.information_dict.items():
 
-            name_label = ttk.Label(master=self._frame, text=a, background="blue", foreground="white")
+            name_label = ttk.Label(
+                master=self._frame, text=a, background="blue", foreground="white")
             line_label = ttk.Label(master=self._frame, text="|"*b)
             amount_label = ttk.Label(master=self._frame, text=b-1,)
 
-            name_label.grid(row=rownum, column = 0, sticky = "SW", columnspan=80)
+            name_label.grid(row=rownum, column=0, sticky="SW", columnspan=80)
             line_label.grid(row=rownum, column=2, sticky="ew")
             amount_label.grid(row=rownum, column=3, sticky="ew")
             rownum += 1
-
-

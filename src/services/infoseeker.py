@@ -38,10 +38,10 @@ class InfoSeeker:
         self.successful_page_handles = 0
         self.successful_add_handles = 0
         print("Hakutiedot resetoitu")
-        return
+
 
     def search_links(self, url):
-        result = requests.get(url)
+        result = requests.get(url, timeout=(10, 10))
         doc = BeautifulSoup(result.text, "html.parser")
 
         try:
@@ -49,24 +49,24 @@ class InfoSeeker:
                 site_url = "https://duunitori.fi"+link.get('href')
                 self.handle(site_url)
 
-        except ValueError or IndexError or AttributeError:
+        except (ValueError, IndexError, AttributeError):
             print("Ongelma linkkien haussa")
-            return
 
     def search_amount_of_ads(self, url):
-        result = requests.get(url)
+        result = requests.get(url, timeout=(10, 10))
         doc = BeautifulSoup(result.text, "html.parser")
 
         try:
-            tags = (doc.find_all(class_="m-b-10-on-all text--body text--left text--center-desk"))
+            tags = (doc.find_all(
+                class_="m-b-10-on-all text--body text--left text--center-desk"))
             return int(tags[0].b.text)
 
-        except ValueError or IndexError or AttributeError:
+        except (ValueError, IndexError, AttributeError):
             print("Ongelma hakemuksien määrän hakemisessa")
-            return
+            return None
 
     def search_amount_of_pages(self, url):
-        result = requests.get(url)
+        result = requests.get(url, timeout=(10, 10))
         doc = BeautifulSoup(result.text, "html.parser")
 
         try:
@@ -74,9 +74,9 @@ class InfoSeeker:
             amount = int(tags[-1].text)
             return amount
 
-        except ValueError or IndexError or AttributeError:
+        except (ValueError, IndexError, AttributeError):
             print("Ongelma sivujen määrän hakemisessa")
-            return
+            return None
 
     def seek_all_pages(self, url):
         self.amount_pages = self.search_amount_of_pages(url)
@@ -84,10 +84,9 @@ class InfoSeeker:
         for pagenum in range(1, self.amount_pages+1):
             self.search_links(url+str(pagenum))
             self.successful_page_handles += 1
-        return
 
     def handle(self, url):
-        result = requests.get(url)
+        result = requests.get(url, timeout=(10,10))
         doc = BeautifulSoup(result.text, "html.parser")
 
         try:
@@ -95,12 +94,13 @@ class InfoSeeker:
             description = tags[0].text
             self.search_instances(description)
             self.successful_add_handles += 1
-            print(f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
+            print(
+                f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} \
+                Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
-        except ValueError or IndexError or AttributeError:
+        except (ValueError, IndexError, AttributeError):
             self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
-            return
 
     def search_instances(self, text: str):
         check_dict = {
@@ -124,29 +124,14 @@ class InfoSeeker:
             ".NET": 0
         }
 
-        for a, b in self.information_dict.items():
-            validword = a+" "
-            if text.find(a) is not None:
-                alku = text.find(a)
-                if validword == text[alku:alku+len(a)+1] and check_dict[a] == 0:
-                    check_dict[a] = 1
-                    self.information_dict[a] += 1
-        
-        return
+        for name in self.information_dict:
+            validword = name+" "
+            if text.find(name) is not None:
+                alku = text.find(name)
+                if validword == text[alku:alku+len(name)+1] and check_dict[name] == 0:
+                    check_dict[name] = 1
+                    self.information_dict[name] += 1
 
     def start(self):
-        self.seeking = 1
         url = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys?sivu="
         self.seek_all_pages(url)
-        self.seeking = 0
-        return
-
-
-"""
-if __name__ == "__main__":
-    url = "https://duunitori.fi/tyopaikat?haku=fullstack"
-    url2 = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys?sivu="
-    url3 = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys"
-    obj = InfoSeeker()
-    obj.start()
-"""
