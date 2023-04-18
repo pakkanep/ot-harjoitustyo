@@ -81,9 +81,9 @@ class InfoSeeker:
     def seek_all_pages(self, url):
         self.amount_pages = self.search_amount_of_pages(url)
         self.amount_ads = self.search_amount_of_ads(url)
-        print(self.amount_ads, self.amount_pages)
         for pagenum in range(1, self.amount_pages+1):
             self.search_links(url+str(pagenum))
+            self.successful_page_handles += 1
         return
 
     def handle(self, url):
@@ -95,9 +95,7 @@ class InfoSeeker:
             description = tags[0].text
             self.search_instances(description)
             self.successful_add_handles += 1
-            print(f"Sivulla: {self.successful_page_handles}/{self.amount_pages}")
-            print(f"Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
-            print(f"Epäonnistuneet {self.failed_add_handles}/{self.successful_add_handles}")
+            print(f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
         except ValueError or IndexError or AttributeError:
             self.failed_add_handles += 1
