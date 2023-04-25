@@ -53,7 +53,7 @@ class InfoSeeker:
 
     def search_amount_of_ads(self, url):
         try:
-            result = requests.get(url, timeout=(10, 10))
+            result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = (doc.find_all(
                 class_="m-b-10-on-all text--body text--left text--center-desk"))
@@ -65,7 +65,7 @@ class InfoSeeker:
 
     def search_amount_of_pages(self, url):
         try:
-            result = requests.get(url, timeout=(10, 10))
+            result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="pagination__pagenum")
             amount = int(tags[-1].text)
@@ -84,7 +84,7 @@ class InfoSeeker:
 
     def handle(self, url):
         try:
-            result = requests.get(url, timeout=(10,10))
+            result = requests.get(url, timeout=(20,20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="description-box")
             description = tags[0].text
