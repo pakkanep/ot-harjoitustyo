@@ -8,6 +8,8 @@
 - [Linkki releaseen](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/Viikko5)
 
 ### Dokumentaatio
+- [arkkitehtuuri](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/arkkitehtuuri.md)
+
 - [vaatimusmäärittely](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.md)
 
 - [tuntikirjanpito](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
