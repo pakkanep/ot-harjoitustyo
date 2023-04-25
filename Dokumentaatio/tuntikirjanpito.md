@@ -19,4 +19,5 @@
 | 15.4  | 4      | uuden kyselyn testaaminen ja korjailu |
 | 17.4  | 6      | kahden luokan yhdistäminen ja testailu sekä käyttöliittymän tekeminen |
 | 18.4  | 7      | käyttöliittymän testailu yms muu säätö ja sälän lisäily |
-| yht   | 55     | |
+| 25.4  | 1      | reset query toiminnallisuuden lisäys käyttöliittymään |
+| yht   | 56     | |
