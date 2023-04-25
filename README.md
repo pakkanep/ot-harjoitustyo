@@ -4,6 +4,8 @@
 - Sovellus suorittaa haun laskemalla löydetyiltä sivuilta eri ohjelmointikielien esiintymiä.
 - Haun jälkeen ohjelma voi käyttäjän pyynnöstä esittää pylväskaavion hakutuloksista.
 
+### Release 
+- [Linkki releaseen](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/Viikko5)
 
 ### Dokumentaatio
 - [vaatimusmäärittely](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.md)
