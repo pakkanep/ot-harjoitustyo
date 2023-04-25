@@ -19,7 +19,7 @@ Sovelluksella on vain yksi käyttäjämuoto ilman minkäänlaisia rajoitteita.
 joka voisi esimerkiksi kertoa prosenttimäärän ja lukumäärän jokaisen kielen esiintymästä ilmotuksissa.
 Tuloksessa voisi näkyä myös kuinka monta työpaikkailmoitusta haun aikana käytiin läpi. (tehty osittain)
 
--Käyttäjä voi nollata hakutiedot(tehty).
+-Käyttäjä voi nollata hakutiedot. (tehty).
 
 
 
