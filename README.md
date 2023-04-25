@@ -22,4 +22,22 @@ Käynnistys onnistuu komennolla:
 ```bash
 poetry run invoke start
 ```
+
+### Komentorivin toiminnot
+
+Koodin laadun voi tarkistaa komennolla:
+```bash
+poetry run invoke lint
+```
+
+koodin testauksen voi suoritta komennolla:
+```bash
+poetry run invoke test
+```
+
+Testikattavauus raportin voi luoda komennolla:
+```bash
+poetry run invoke coverage-report
+```
+
   
