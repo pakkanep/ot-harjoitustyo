@@ -28,6 +28,9 @@ class UI:
     def _start_query(self):
         self.test.start()
 
+    def _reset_query_results(self):
+        self.test.reset_all()
+
     def _show_query_view(self):
         self._hide_current_view()
 
@@ -35,6 +38,7 @@ class UI:
             self._root,
             self._handle_result,
             self._start_query,
+            self._reset_query_results,
             self.test
         )
 
