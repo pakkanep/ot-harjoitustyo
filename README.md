@@ -34,7 +34,7 @@ Koodin laadun voi tarkistaa komennolla:
 poetry run invoke lint
 ```
 
-koodin testauksen voi suoritta komennolla:
+koodin testauksen voi suorittaa komennolla:
 ```bash
 poetry run invoke test
 ```
