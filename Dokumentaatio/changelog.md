@@ -20,6 +20,7 @@
 - Lisätty luokka ResultView.
 - Lisätty luokka QueryView.
 ## Viikko 5
+- Lisätty hakutulosten resetointitoiminnallisuus käyttöliittymään
 
 ## Viikko 6
-
+- Lisätty muutama uusi testi
