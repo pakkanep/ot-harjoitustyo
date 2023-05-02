@@ -24,3 +24,4 @@
 
 ## Viikko 6
 - Lisätty muutama uusi testi
+- Edistetty käyttöliittymän toiminnallisuuksia.
