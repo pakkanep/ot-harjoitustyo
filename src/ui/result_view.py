@@ -26,6 +26,14 @@ class ResultView:
         )
 
         button.grid(row=1, column=0)
+        
+        pages_label = ttk.Label(
+            master=self._frame,
+            text=f"Handled pages: {self._information.successful_add_handles}",
+            background="blue", foreground="white")
+        
+        pages_label.grid(row=2, column=0)
+        
 
         rownum = 5
         for a, b in self._information.information_dict.items():
