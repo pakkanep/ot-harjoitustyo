@@ -73,17 +73,16 @@ class InfoSeeker:
         Exceptions:
         mahdollinen ongelma sivun käsittelyssä
         """
-        
-
-        try:    
+        try:
             result = requests.get(url, timeout=(10, 10))
             doc = BeautifulSoup(result.text, "html.parser")
             for link in doc.find_all(class_="job-box__hover gtm-search-result"):
                 site_url = "https://duunitori.fi"+link.get('href')
                 self.handle(site_url)
 
-        except (TimeoutError, ValueError, IndexError, AttributeError):
+        except:
             print("Ongelma linkkien haussa")
+
 
     def search_amount_of_ads(self, url):
         """
@@ -96,11 +95,10 @@ class InfoSeeker:
         doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
         tags: ilmoitusten lukumäärä etsitty html koodista.
 
-        Returns:
-        tags muutuujan osan josta tarkka luku löytyy.
+        Returns: tags muutuujan osan josta tarkka luku löytyy tai
+        ongelman sattuessa None.
 
-        Exceptions:
-        mahdollinen ongelma sivun käsittelyssä.
+        Exceptions: mahdollinen ongelma sivun käsittelyssä.
         """
         try:
             result = requests.get(url, timeout=(20, 20))
@@ -109,11 +107,27 @@ class InfoSeeker:
                 class_="m-b-10-on-all text--body text--left text--center-desk"))
             return int(tags[0].b.text)
 
-        except (TimeoutError, ValueError, IndexError, AttributeError):
+        except:
             print("Ongelma hakemuksien määrän hakemisessa")
             return None
 
     def search_amount_of_pages(self, url):
+        """Etsii parametrina annetun linkin avulla kuinka monelle sivulle
+        työpaikkailmoitukset on jaettu. Eli kuinka monta sivua on käytävä läpi,
+        että kaikki työpaikkailmoitusten linkit löydetään.
+
+        Args:
+        url: linkki nettisivulle
+        result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
+        doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+        tags: sivujen lukumäärä etsitty html koodista.
+        amount: sivujen tarkka lukumäärä tallennettu.
+
+        Returns: palauttaa löydettujen sivujen lukumäärän tai
+        ongelman sattuessa None.
+
+        Exceptions: mahdollinen ongelma sivujen lukumäärää etsiessä.
+        """
         try:
             result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
@@ -121,7 +135,7 @@ class InfoSeeker:
             amount = int(tags[-1].text)
             return amount
 
-        except (TimeoutError, ValueError, IndexError, AttributeError):
+        except:
             print("Ongelma sivujen määrän hakemisessa")
             return None
 
@@ -144,7 +158,7 @@ class InfoSeeker:
                 f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} \
                 Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
-        except (TimeoutError, ValueError, IndexError, AttributeError):
+        except:
             self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
 

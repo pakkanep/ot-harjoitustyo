@@ -42,9 +42,10 @@ class TestInfoSeeker(unittest.TestCase):
         })
 
 
-
     def test_search_instances(self):
-        text = "We are looking for a Java developer who knows Java programming language and is familiar with Java frameworks like Spring and Hibernate."
+        text = """We are looking for a Java developer who knows Java programming 
+        language and is familiar with Java frameworks like Spring and Hibernate.
+        """
         expected_result = {
             "Java": 2,
             "Python": 1,
@@ -86,13 +87,35 @@ class TestInfoSeeker(unittest.TestCase):
         self.seeker.handle.assert_any_call('https://duunitori.fi/job/456')
 
 
-"""
-    def test_search_amount_of_ads(self):
-        pass
+
+    @patch('requests.get')
+    def test_search_amount_of_ads(self, mock_get):
+        mock_response = '<html><body><div class="m-b-10-on-all text--body text--left text--center-desk"><b>10</b> hakutulosta</div></body></html>'
+        mock_get.return_value.text = mock_response
+        expected_result = 10
+        url = 'http://example.com'
+        result = self.seeker.search_amount_of_ads(url)
+        self.assertEqual(result, expected_result)
+
+    @patch('requests.get', side_effect=Exception)
+    def test_search_amount_of_ads_exception(self, mock_get):
+        url = 'http://example.com'
+        result = self.seeker.search_amount_of_ads(url)
+        self.assertIsNone(result)
 
     def test_search_amount_of_pages(self):
-        pass
+        # valid URL
+        url = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys?sivu="
+        result = self.seeker.search_amount_of_pages(url)
+        self.assertIsNotNone(result)
+        self.assertIsInstance(result, int)
 
+        # invalid URL
+        invalid_url = "https://duuunitori.fi/tyopaikat/"
+        result = self.seeker.search_amount_of_pages(invalid_url)
+        self.assertIsNone(result)
+
+"""     
     def test_seek_all_pages(self):
         pass
 
