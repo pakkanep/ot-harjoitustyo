@@ -3,13 +3,26 @@ import requests
 
 
 class InfoSeeker:
+    """Luokka, joka suorittaa esiintymähaun ja palauttaa sanakirjan,
+    joka sisältää kielien esiintymät.
+    
+    Attributes:
+        successful_add_handles: onnistuneiden työpaikkailmoitusten lkm.
+        failed_add_handles: epäonnistuneiden työpaikkailmoitusten lkm.
+        successful_page_handles: onnistuneiden sivujen käsittelyt, josta linkit löytyvät
+        amount_pages: linkkisivujen lukumäärä yhteensä.
+        amount_ads: työpaikkailmoitusten lukumäärä yhteensä.
+        information_dict: Sanakirja, jonka avaimina olevat arvot ovat ohjelmointikielien nimiä,
+        joita etsitään sivuilta.
+    """
     def __init__(self):
+        """Konstruktori alustaa kaikki tarpeelliset muuttujat ja sanakirjan,
+        johon halutut esiintymät tallennetaan"""
         self.successful_add_handles = 0
         self.failed_add_handles = 0
         self.successful_page_handles = 0
         self.amount_pages = 0
         self.amount_ads = 0
-        self.seeking = 0
         self.information_dict = {
             "Java": 1,
             "Python": 1,
@@ -32,6 +45,12 @@ class InfoSeeker:
         }
 
     def reset_all(self):
+        """
+        Alustaa kaikki tarvittaessa muuttujat, jotka ovat ohjelman
+        suorituksen aikana muuttuneet.
+
+        Args: samat kun ylempänä lueteltu
+        """
         self.information_dict = dict.fromkeys(self.information_dict, 1)
         self.amount_ads = 0
         self.amount_pages = 0
@@ -41,6 +60,21 @@ class InfoSeeker:
 
 
     def search_links(self, url):
+        """
+        Etsii yksi kerrallaan halutut linkit, jotka sivulta löytyy ja
+        kutsuu sitten metodia handle ja välittää parametrina löydetyn linkin
+
+        Args:
+        url: linkki nettisivulle
+        result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
+        doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+        site_url: doc muuttujan sisällöstä löydetty työpaikkailmoitukseen johtava linkki.
+        
+        Exceptions:
+        mahdollinen ongelma sivun käsittelyssä
+        """
+        
+
         try:    
             result = requests.get(url, timeout=(10, 10))
             doc = BeautifulSoup(result.text, "html.parser")
@@ -52,6 +86,22 @@ class InfoSeeker:
             print("Ongelma linkkien haussa")
 
     def search_amount_of_ads(self, url):
+        """
+        Etsii annetun linkin avulla löydettyjen työpaikkailmoitusten
+        kokonaislukumäärän
+
+        Args:
+        url: linkki nettisivulle
+        result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
+        doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+        tags: ilmoitusten lukumäärä etsitty html koodista.
+
+        Returns:
+        tags muutuujan osan josta tarkka luku löytyy.
+
+        Exceptions:
+        mahdollinen ongelma sivun käsittelyssä.
+        """
         try:
             result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
