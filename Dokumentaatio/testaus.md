@@ -1,2 +1,2 @@
+![image](https://user-images.githubusercontent.com/118994720/235780927-52a398e1-78bf-4304-88cb-959fde141724.png)
 
-![Screenshot from 2023-05-02 20-40-41](https://user-images.githubusercontent.com/118994720/235743191-d2fa62cf-e61e-44f4-a28c-4ea672d93ab7.png)
