@@ -20,4 +20,5 @@
 | 17.4  | 6      | kahden luokan yhdistäminen ja testailu sekä käyttöliittymän tekeminen |
 | 18.4  | 7      | käyttöliittymän testailu yms muu säätö ja sälän lisäily |
 | 25.4  | 1      | reset query toiminnallisuuden lisäys käyttöliittymään |
-| yht   | 56     | |
+| 2.5   | 1      | unittestien duunailua, haarautumakattavuus yli 40 prosenttiin |
+| yht   | 57     | |
