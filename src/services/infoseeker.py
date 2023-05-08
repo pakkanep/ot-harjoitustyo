@@ -74,13 +74,13 @@ class InfoSeeker:
         mahdollinen ongelma sivun käsittelyssä
         """
         try:
-            result = requests.get(url, timeout=(10, 10))
+            result = requests.get(url, timeout=0.1)
             doc = BeautifulSoup(result.text, "html.parser")
             for link in doc.find_all(class_="job-box__hover gtm-search-result"):
                 site_url = "https://duunitori.fi"+link.get('href')
                 self.handle(site_url)
 
-        except:
+        except requests.exceptions.Timeout:
             print("Ongelma linkkien haussa")
 
 
@@ -101,13 +101,13 @@ class InfoSeeker:
         Exceptions: mahdollinen ongelma sivun käsittelyssä.
         """
         try:
-            result = requests.get(url, timeout=(20, 20))
+            result = requests.get(url, timeout=0.1)
             doc = BeautifulSoup(result.text, "html.parser")
             tags = (doc.find_all(
                 class_="m-b-10-on-all text--body text--left text--center-desk"))
             return int(tags[0].b.text)
 
-        except:
+        except requests.exceptions.Timeout:
             print("Ongelma hakemuksien määrän hakemisessa")
             return None
 
@@ -129,13 +129,13 @@ class InfoSeeker:
         Exceptions: mahdollinen ongelma sivujen lukumäärää etsiessä.
         """
         try:
-            result = requests.get(url, timeout=(20, 20))
+            result = requests.get(url, timeout=0.1)
             doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="pagination__pagenum")
             amount = int(tags[-1].text)
             return amount
 
-        except:
+        except requests.exceptions.Timeout:
             print("Ongelma sivujen määrän hakemisessa")
             return None
 
@@ -148,7 +148,7 @@ class InfoSeeker:
 
     def handle(self, url):
         try:
-            result = requests.get(url, timeout=(20,20))
+            result = requests.get(url, timeout=0.1)
             doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="description-box")
             description = tags[0].text
@@ -158,7 +158,7 @@ class InfoSeeker:
                 f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} \
                 Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
-        except:
+        except requests.exceptions.Timeout:
             self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
 
