@@ -16,8 +16,8 @@ Sovelluksella on vain yksi käyttäjämuoto ilman minkäänlaisia rajoitteita.
 -Käyttäjä voi suorittaa haun. (tehty)
 
 -Käyttäjä voi pyytää ohjelmaa esittämään hakutulokset yksinkertaisena kaaviona,
-joka voisi esimerkiksi kertoa prosenttimäärän ja lukumäärän jokaisen kielen esiintymästä ilmotuksissa.
-Tuloksessa voisi näkyä myös kuinka monta työpaikkailmoitusta haun aikana käytiin läpi. (tehty osittain)
+joka näyttää lukumäärän jokaisen kielen esiintymästä ilmotuksissa.
+Tuloksessa voisi näkyä myös kuinka monta työpaikkailmoitusta haun aikana käytiin läpi. (tehty)
 
 -Käyttäjä voi nollata hakutiedot. (tehty).
 
