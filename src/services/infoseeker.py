@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-
+import threading
 
 class InfoSeeker:
     """Luokka, joka suorittaa esiintymähaun ja palauttaa sanakirjan,
@@ -74,7 +74,7 @@ class InfoSeeker:
         mahdollinen ongelma sivun käsittelyssä
         """
         try:
-            result = requests.get(url, timeout=0.1)
+            result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             for link in doc.find_all(class_="job-box__hover gtm-search-result"):
                 site_url = "https://duunitori.fi"+link.get('href')
@@ -96,12 +96,12 @@ class InfoSeeker:
         tags: ilmoitusten lukumäärä etsitty html koodista.
 
         Returns: tags muutuujan osan josta tarkka luku löytyy tai
-        ongelman sattuessa None.
+        ongelman sattuessa 0.
 
         Exceptions: mahdollinen ongelma sivun käsittelyssä.
         """
         try:
-            result = requests.get(url, timeout=0.1)
+            result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = (doc.find_all(
                 class_="m-b-10-on-all text--body text--left text--center-desk"))
@@ -109,7 +109,7 @@ class InfoSeeker:
 
         except requests.exceptions.Timeout:
             print("Ongelma hakemuksien määrän hakemisessa")
-            return None
+            return 0
 
     def search_amount_of_pages(self, url):
         """Etsii parametrina annetun linkin avulla kuinka monelle sivulle
@@ -124,12 +124,12 @@ class InfoSeeker:
         amount: sivujen tarkka lukumäärä tallennettu.
 
         Returns: palauttaa löydettujen sivujen lukumäärän tai
-        ongelman sattuessa None.
+        ongelman sattuessa 0.
 
         Exceptions: mahdollinen ongelma sivujen lukumäärää etsiessä.
         """
         try:
-            result = requests.get(url, timeout=0.1)
+            result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="pagination__pagenum")
             amount = int(tags[-1].text)
@@ -137,7 +137,7 @@ class InfoSeeker:
 
         except requests.exceptions.Timeout:
             print("Ongelma sivujen määrän hakemisessa")
-            return None
+            return 0
 
     def seek_all_pages(self, url):
         self.amount_pages = self.search_amount_of_pages(url)
@@ -148,7 +148,7 @@ class InfoSeeker:
 
     def handle(self, url):
         try:
-            result = requests.get(url, timeout=0.1)
+            result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = doc.find_all(class_="description-box")
             description = tags[0].text
