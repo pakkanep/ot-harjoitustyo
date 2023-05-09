@@ -25,6 +25,10 @@ Tuloksessa voisi näkyä myös kuinka monta työpaikkailmoitusta haun aikana kä
 
 ### Kehitysideoita
 
+-Haun suorittaminen kestää tällä hetkellä noin 10 minuuttia, joten olisi vielä hyvä
+monisäikeistää haun suoritus. Myös käyttöliittymän käyttö pysähtyy haun ajaksi joten olisi myös hyvä
+tehdä siitä oma säikeensä, jolloin käyttöliittymää voisi käyttää haun aikana.
+
 -Hakutulokset voisi tallentaa tietokantaan, jonka avulla myös vanhojen hakujen tuloksia
 voisi halutessa katsella.
 
