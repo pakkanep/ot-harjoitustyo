@@ -21,4 +21,5 @@
 | 18.4  | 7      | käyttöliittymän testailu yms muu säätö ja sälän lisäily |
 | 25.4  | 1      | reset query toiminnallisuuden lisäys käyttöliittymään |
 | 2.5   | 2      | unittestien duunailua, haarautumakattavuus yli 60 prosenttiin ja käyttöliittymän edistäminen |
-| yht   | 58     | |
+| 8.5   | 2      | timeout ongelman korjailua ja monisäikeistyksen opettelua |
+| yht   | 60     | |
