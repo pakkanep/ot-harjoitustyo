@@ -1,6 +1,8 @@
+#import threading
 from bs4 import BeautifulSoup
 import requests
-import threading
+from requests.exceptions import Timeout
+
 
 class InfoSeeker:
     """Luokka, joka suorittaa esiintymähaun ja palauttaa sanakirjan,
@@ -80,7 +82,7 @@ class InfoSeeker:
                 site_url = "https://duunitori.fi"+link.get('href')
                 self.handle(site_url)
 
-        except requests.exceptions.Timeout:
+        except (Timeout,IndexError):
             print("Ongelma linkkien haussa")
 
 
@@ -107,7 +109,7 @@ class InfoSeeker:
                 class_="m-b-10-on-all text--body text--left text--center-desk"))
             return int(tags[0].b.text)
 
-        except requests.exceptions.Timeout:
+        except (Timeout,IndexError):
             print("Ongelma hakemuksien määrän hakemisessa")
             return 0
 
@@ -135,7 +137,7 @@ class InfoSeeker:
             amount = int(tags[-1].text)
             return amount
 
-        except requests.exceptions.Timeout:
+        except (Timeout,IndexError):
             print("Ongelma sivujen määrän hakemisessa")
             return 0
 
@@ -158,7 +160,7 @@ class InfoSeeker:
                 f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} \
                 Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
-        except requests.exceptions.Timeout:
+        except (Timeout, IndexError):
             self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
 
