@@ -12,22 +12,22 @@ Sovelluksella on vain yksi käyttäjämuoto ilman minkäänlaisia rajoitteita.
 
 ## Toiminnallisuus
 
--Käyttäjä voi suorittaa haun.
+- Käyttäjä voi suorittaa haun.
 
--Käyttäjä voi pyytää ohjelmaa esittämään hakutulokset yksinkertaisena kaaviona,
+- Käyttäjä voi pyytää ohjelmaa esittämään hakutulokset yksinkertaisena kaaviona,
 joka näyttää lukumäärän jokaisen kielen esiintymästä ilmotuksissa.
 - Tuloksessa näkyy myös kuinka monta työpaikkailmoitusta haun aikana käytiin läpi.
 
--Käyttäjä voi nollata hakutiedot. 
+- Käyttäjä voi nollata hakutiedot. 
 
--Hakutulokset voi tallentaa csv tiedostoon, jonka avulla myös vanhojen hakujen tuloksia
+- Hakutulokset voi tallentaa csv tiedostoon, jonka avulla myös vanhojen hakujen tuloksia
 voi halutessa katsella. (vaiheessa)
 
 
 
 ### Kehitysideoita
 
--Haun suorittaminen kestää tällä hetkellä noin 10 minuuttia, joten olisi vielä hyvä
+- Haun suorittaminen kestää tällä hetkellä noin 10 minuuttia, joten olisi vielä hyvä
 monisäikeistää haun suoritus.
 
 
