@@ -2,7 +2,8 @@
 
 - Sovelluksella käyttäjä voi suorittaa haun, joka hakee tietoa siitä mitä ohjelmointikieli-vaatimuksia/toiveita ohjelmointiin liittyvissä työpaikkailmoituksissa on listattu Duunitori.fi:n sivuilla.
 - Sovellus suorittaa haun laskemalla löydetyiltä sivuilta eri ohjelmointikielien esiintymiä.
-- Haun jälkeen ohjelma voi käyttäjän pyynnöstä esittää pylväskaavion hakutuloksista.
+- Haun jälkeen ohjelma voi käyttäjän pyynnöstä esittää pylväskaavion hakutuloksista sekä
+tallentaa hakutulokset csv tiedostoon myöhemmin luettavaksi.
 
 ### Release 
 - [Linkki releaseen](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/Viikko5)
