@@ -28,3 +28,4 @@
 
 ## viikko 7
 - Lisätty käyttöliittymään napit vanhojen hakutuloksien selaamiselle ja tallennukselle. (vaiheessa) 
+- Lisätty luokka Operations
