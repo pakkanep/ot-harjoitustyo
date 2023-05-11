@@ -22,4 +22,5 @@
 | 25.4  | 1      | reset query toiminnallisuuden lisäys käyttöliittymään |
 | 2.5   | 2      | unittestien duunailua, haarautumakattavuus yli 60 prosenttiin ja käyttöliittymän edistäminen |
 | 8.5   | 2      | timeout ongelman korjailua ja monisäikeistyksen opettelua |
-| yht   | 60     | |
+| 11.5  | 8      | monisäikeistys tehty, lisätty Operations luokka sekä muutettu InfoSeeker luokkaa hiukan. |
+| yht   | 68     | |
