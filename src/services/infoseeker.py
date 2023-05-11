@@ -1,4 +1,3 @@
-#import threading
 from bs4 import BeautifulSoup
 import requests
 from requests.exceptions import Timeout
@@ -6,23 +5,23 @@ from requests.exceptions import Timeout
 
 class InfoSeeker:
     """Luokka, joka suorittaa esiintymähaun ja palauttaa sanakirjan,
-    joka sisältää kielien esiintymät.
-    
+        joka sisältää kielien esiintymät.
+
     Attributes:
         successful_add_handles: onnistuneiden työpaikkailmoitusten lkm.
         failed_add_handles: epäonnistuneiden työpaikkailmoitusten lkm.
         successful_page_handles: onnistuneiden sivujen käsittelyt, josta linkit löytyvät
-        amount_pages: linkkisivujen lukumäärä yhteensä.
         amount_ads: työpaikkailmoitusten lukumäärä yhteensä.
         information_dict: Sanakirja, jonka avaimina olevat arvot ovat ohjelmointikielien nimiä,
         joita etsitään sivuilta.
     """
+
     def __init__(self):
         """Konstruktori alustaa kaikki tarpeelliset muuttujat ja sanakirjan,
-        johon halutut esiintymät tallennetaan"""
+            johon halutut esiintymät tallennetaan"""
         self.successful_add_handles = 0
-        self.failed_add_handles = 0
-        self.successful_page_handles = 0
+        self.interruptvalue = False
+        self.links = set()
         self.amount_pages = 0
         self.amount_ads = 0
         self.information_dict = {
@@ -47,88 +46,93 @@ class InfoSeeker:
         }
 
     def reset_all(self):
-        """
-        Alustaa kaikki tarvittaessa muuttujat, jotka ovat ohjelman
-        suorituksen aikana muuttuneet.
-
-        Args: samat kun ylempänä lueteltu
+        """Alustaa kaikki tarvittaessa muuttujat, jotka ovat ohjelman
+            suorituksen aikana muuttuneet.
+        Args:
+            samat kun ylempänä lueteltu
         """
         self.information_dict = dict.fromkeys(self.information_dict, 1)
+        self.interruptvalue = False
+        self.links.clear()
         self.amount_ads = 0
         self.amount_pages = 0
-        self.successful_page_handles = 0
         self.successful_add_handles = 0
-        print("Hakutiedot resetoitu")
-
+        print("Hakutiedot alustettu")
 
     def search_links(self, url):
-        """
-        Etsii yksi kerrallaan halutut linkit, jotka sivulta löytyy ja
-        kutsuu sitten metodia handle ja välittää parametrina löydetyn linkin
+        """Etsii kaikkien ilmoitusten linkit, jotka sivuilta löytyy ja
+            lisää ne set tietorakenteeseen
 
         Args:
-        url: linkki nettisivulle
-        result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
-        doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-        site_url: doc muuttujan sisällöstä löydetty työpaikkailmoitukseen johtava linkki.
-        
+            url: linkki nettisivulle
+            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
+            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+            site_url: doc muuttujan sisällöstä löydetty työpaikkailmoitukseen
+            johtava linkki.
+
         Exceptions:
-        mahdollinen ongelma sivun käsittelyssä
+            mahdollinen ongelma sivun käsittelyssä
         """
         try:
             result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             for link in doc.find_all(class_="job-box__hover gtm-search-result"):
+                if self.interruptvalue:
+                    break
                 site_url = "https://duunitori.fi"+link.get('href')
-                self.handle(site_url)
+                self.links.add(site_url)
+                print(f"Linkkejä haettu: {len(self.links)}/{self.amount_ads}")
 
-        except (Timeout,IndexError):
+        except (Timeout, IndexError):
             print("Ongelma linkkien haussa")
 
-
     def search_amount_of_ads(self, url):
-        """
-        Etsii annetun linkin avulla löydettyjen työpaikkailmoitusten
-        kokonaislukumäärän
+        """Etsii annetun linkin avulla löydettyjen työpaikkailmoitusten
+            kokonaislukumäärän
 
         Args:
-        url: linkki nettisivulle
-        result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
-        doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-        tags: ilmoitusten lukumäärä etsitty html koodista.
+            url: linkki nettisivulle
+            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin
+            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+            tags: ilmoitusten lukumäärä etsitty html koodista.
 
-        Returns: tags muutuujan osan josta tarkka luku löytyy tai
-        ongelman sattuessa 0.
+        Returns:
+            tags muutuujan osan josta tarkka luku löytyy tai
+            ongelman sattuessa 0.
 
-        Exceptions: mahdollinen ongelma sivun käsittelyssä.
+        Exceptions:
+            mahdollinen ongelma sivun käsittelyssä.
         """
         try:
             result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
             tags = (doc.find_all(
-                class_="m-b-10-on-all text--body text--left text--center-desk"))
+                class_="m-b-10-on-all text--body text--left text--center-desk"
+            ))
             return int(tags[0].b.text)
 
-        except (Timeout,IndexError):
+        except (Timeout, IndexError):
             print("Ongelma hakemuksien määrän hakemisessa")
             return 0
 
     def search_amount_of_pages(self, url):
         """Etsii parametrina annetun linkin avulla kuinka monelle sivulle
-        työpaikkailmoitukset on jaettu. Eli kuinka monta sivua on käytävä läpi,
-        että kaikki työpaikkailmoitusten linkit löydetään.
+            työpaikkailmoitukset on jaettu. Eli kuinka monta sivua on käytävä läpi,
+            että kaikki työpaikkailmoitusten linkit löydetään.
 
         Args:
-        url: linkki nettisivulle
-        result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
-        doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-        tags: sivujen lukumäärä etsitty html koodista.
-        amount: sivujen tarkka lukumäärä tallennettu.
+            url: linkki nettisivulle
+            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
+            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+            tags: sivujen lukumäärä etsitty html koodista.
+            amount: sivujen tarkka lukumäärä tallennettu.
 
-        Returns: palauttaa löydettujen sivujen lukumäärän tai
-        ongelman sattuessa 0.
+        Returns:
+            palauttaa löydettujen sivujen lukumäärän tai
+            ongelman sattuessa 0.
 
-        Exceptions: mahdollinen ongelma sivujen lukumäärää etsiessä.
+        Exceptions:
+            mahdollinen ongelma sivujen lukumäärää etsiessä.
         """
         try:
             result = requests.get(url, timeout=(20, 20))
@@ -137,16 +141,21 @@ class InfoSeeker:
             amount = int(tags[-1].text)
             return amount
 
-        except (Timeout,IndexError):
+        except (Timeout, IndexError):
             print("Ongelma sivujen määrän hakemisessa")
             return 0
 
-    def seek_all_pages(self, url):
+    def seek_all_pages(self, seen, url):
         self.amount_pages = self.search_amount_of_pages(url)
         self.amount_ads = self.search_amount_of_ads(url)
         for pagenum in range(1, self.amount_pages+1):
-            self.search_links(url+str(pagenum))
-            self.successful_page_handles += 1
+            if self.interruptvalue:
+                break
+            if pagenum in seen:
+                continue
+            else:
+                seen.add(pagenum)
+                self.search_links(url+str(pagenum))
 
     def handle(self, url):
         try:
@@ -156,12 +165,8 @@ class InfoSeeker:
             description = tags[0].text
             self.search_instances(description)
             self.successful_add_handles += 1
-            print(
-                f"Sivuja käsitelty: {self.successful_page_handles}/{self.amount_pages} \
-                Ilmoituksia käsitelty: {self.successful_add_handles}/{self.amount_ads}")
 
         except (Timeout, IndexError):
-            self.failed_add_handles += 1
             print("Ongelma sivun Käsittelyssä")
 
     def search_instances(self, text: str):
@@ -187,13 +192,11 @@ class InfoSeeker:
         }
 
         for name in self.information_dict:
+            if self.interruptvalue:
+                break
             validword = name+" "
             if text.find(name) is not None:
                 alku = text.find(name)
                 if validword == text[alku:alku+len(name)+1] and check_dict[name] == 0:
                     check_dict[name] = 1
                     self.information_dict[name] += 1
-
-    def start(self):
-        url = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys?sivu="
-        self.seek_all_pages(url)

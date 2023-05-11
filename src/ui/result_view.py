@@ -2,11 +2,11 @@ from tkinter import ttk, constants
 
 
 class ResultView:
-    def __init__(self, root, handle_result, information):
+    def __init__(self, root, handle_result, seeker):
         self._root = root
         self._handle_result = handle_result
         self._frame = None
-        self._information = information
+        self._seeker = seeker
 
         self._initialize()
 
@@ -26,20 +26,23 @@ class ResultView:
         )
 
         button.grid(row=1, column=0)
-        
+
         pages_label = ttk.Label(
             master=self._frame,
-            text=f"Handled pages: {self._information.successful_add_handles}",
+            text=f"Handled pages: {self._seeker.successful_add_handles}",
             background="blue", foreground="white")
-        
+
         pages_label.grid(row=2, column=0)
-        
 
         rownum = 5
-        for a, b in self._information.information_dict.items():
+        for a, b in self._seeker.information_dict.items():
 
             name_label = ttk.Label(
-                master=self._frame, text=a, background="blue", foreground="white")
+                master=self._frame,
+                text=a,
+                background="blue",
+                foreground="white"
+            )
             line_label = ttk.Label(master=self._frame, text="|"*b)
             amount_label = ttk.Label(master=self._frame, text=b-1,)
 
