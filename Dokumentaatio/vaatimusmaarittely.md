@@ -27,8 +27,8 @@ voi halutessa katsella. (vaiheessa)
 
 ### Kehitysideoita
 
-- Haun suorittaminen kestää tällä hetkellä noin 10 minuuttia, joten olisi vielä hyvä
-monisäikeistää haun suoritus.
+- Haun suorittamisen aikana käyttöliittymää ei voi käyttää ja kaikki haun aikana tuleva informaatio näkyy komentorivillä.
+Tavoitteena olisi saada reaaliaikaisesti ilmoituksia näkyviin käyttöliittymään sekä painike joka keskeyttää haun. 
 
 
 
