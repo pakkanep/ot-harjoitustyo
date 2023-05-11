@@ -16,5 +16,5 @@ Käynnistyksen jälkeen:
 - Haun vaiheesta tulee informaatiota komentoriville kun se on käynnissä.
 - Haun voi keskeyttää komentorivillä painamalla control+c
 - Resetoida tulokset tai katsoa tulokset
-- Tallentaa tulokset (tulossa)
-- Katsella haktuloshistoriaa (tulossa)
+- Tallentaa tulokset (vaiheessa)
+- Katsella hakutuloshistoriaa (vaiheessa)
