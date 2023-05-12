@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 from services.infoseeker import InfoSeeker
 from bs4 import BeautifulSoup
+from requests.exceptions import Timeout
 
 
 class TestInfoSeeker(unittest.TestCase):
@@ -87,17 +88,52 @@ class TestInfoSeeker(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
 
-    def test_search_amount_of_pages(self,):
-        # valid URL
+    def test_search_amount_of_pages(self):
+
         url = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys?sivu="
         result = self.seeker.search_amount_of_pages(url)
         self.assertIsNotNone(result)
         self.assertIsInstance(result, int)
 
-"""     
-    def test_seek_all_pages(self):
-        pass
+    @patch('requests.get')
+    def test_search_links(self, mock_get):
+        mock_get.return_value = MagicMock(text='<html><body><a class="job-box__hover gtm-search-result" href="/job/1234"></a></body></html>')
+        self.seeker.search_links('https://duunitori.fi')
+        self.assertEqual(len(self.seeker.links), 1)
+        self.assertEqual(self.seeker.links.pop(), 'https://duunitori.fi/job/1234')
 
-    def test_handle(self):
-        pass
-"""
+    @patch('requests.get')
+    def test_handle_success(self, mock_get):
+        mock_response = MagicMock()
+        mock_response.text = '<html><div class="description-box">Python developer wanted</div></html>'
+        mock_get.return_value = mock_response
+
+        seeker = InfoSeeker()
+
+        seeker.handle('http://example.com')
+
+        self.assertEqual(seeker.successful_add_handles, 1)
+
+        self.assertEqual(seeker.information_dict['Python'], 2)
+
+    @patch('requests.get', side_effect=Timeout)
+    def test_handle_timeout(self, mock_get):
+        seeker = InfoSeeker()
+
+        seeker.handle('http://example.com')
+
+        self.assertEqual(seeker.successful_add_handles, 0)
+
+    
+    @patch.object(InfoSeeker, 'search_links')
+    @patch.object(InfoSeeker, 'search_amount_of_ads')
+    @patch.object(InfoSeeker, 'search_amount_of_pages')
+    def test_seek_all_pages(self, mock_search_amount_of_pages, mock_search_amount_of_ads, mock_search_links):
+        info_seeker = InfoSeeker()
+        mock_search_amount_of_pages.return_value = 3
+        mock_search_amount_of_ads.return_value = 10
+        mock_search_links.return_value = None
+        seen = set()
+        url = 'http://www.example.com/'
+        info_seeker.seek_all_pages(seen, url)
+        self.assertEqual(mock_search_links.call_count, 3)
