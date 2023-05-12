@@ -1,2 +1,6 @@
-![image](https://user-images.githubusercontent.com/118994720/235780927-52a398e1-78bf-4304-88cb-959fde141724.png)
+operations_test testissä suoritetaan haku kokonaisuudessaan kerran joten testien suorittamisessa suorittamisessa menee noin 2min
+<p>
+
+![image](https://github.com/pakkanep/ot-harjoitustyo/assets/118994720/2d4b407f-86f2-4848-a5bb-10ecbc977d0f)
+
 
