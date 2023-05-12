@@ -2,14 +2,14 @@
 
 | pvm   | aika/h | tehtavat  |
 | :----:|:-------| :-----|
-|       | 1      | tutustuminen nettisivujen hakemiseen ja läpikäymiseen pythonilla |
-|       | 2      | bf4 asentaminen ja perusteiden opettelu |
-|       | 2      | nettisivujen koodin tutkiminen ja tarpeellisen tiedon etsiminen manuaalisesti |
-|       | 5      | oikean tiedon hakeminen BeautifulSoupilla |
-|       | 5      | tarpeellisen tiedon muotoilu oikeanlaiseksi |
-|       | 5      | tutustuminen Tkinteriin |
-|       | 2      | testaus |
-|       | 2      | yksinkertaisen tekstikäyttöliittymän teko |
+| 20.3  | 1      | tutustuminen nettisivujen hakemiseen ja läpikäymiseen pythonilla |
+| 21.3  | 2      | bf4 asentaminen ja perusteiden opettelu |
+| 24.3  | 2      | nettisivujen koodin tutkiminen ja tarpeellisen tiedon etsiminen manuaalisesti |
+| 25.3  | 5      | oikean tiedon hakeminen BeautifulSoupilla |
+| 26.3  | 5      | tarpeellisen tiedon muotoilu oikeanlaiseksi |
+| 1.4   | 5      | tutustuminen Tkinteriin |
+| 2.4   | 2      | testaus |
+| 5.4   | 2      | yksinkertaisen tekstikäyttöliittymän teko |
 | 9.4   | 2      | nettisivujen tutkiminen laajempaa kyselyä varten |
 | 10.4  | 2      | laajemman kyselyn kehitys |
 | 11.4  | 2      | testaus|
@@ -23,4 +23,5 @@
 | 2.5   | 2      | unittestien duunailua, haarautumakattavuus yli 60 prosenttiin ja käyttöliittymän edistäminen |
 | 8.5   | 2      | timeout ongelman korjailua ja monisäikeistyksen opettelua |
 | 11.5  | 8      | monisäikeistys tehty, lisätty Operations luokka sekä muutettu InfoSeeker luokkaa hiukan. |
-| yht   | 68     | |
+| 12.5  | 2      | testejä operations luokalle. |
+| yht   | 70     | |
