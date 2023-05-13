@@ -31,9 +31,6 @@ class UI:
     def _reset_query_results(self):
         self._seeker.reset_all()
 
-    def _save_query_results(self):
-        self._seeker.save_results()
-
     def _show_query_view(self):
         self._hide_current_view()
 
@@ -42,8 +39,7 @@ class UI:
             self._handle_result,
             self._start_query,
             self._reset_query_results,
-            self._seeker,
-            self._save_query_results
+            self._seeker
         )
         self._current_view.pack()
 
@@ -56,4 +52,3 @@ class UI:
             self._seeker
         )
         self._current_view.pack()
-

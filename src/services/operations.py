@@ -9,12 +9,6 @@ class Operations(InfoSeeker):
     def __init__(self):
         super().__init__()
 
-    def save_results(self):
-        print("save_results testitulostus")
-
-    def get_results(self):
-        print("get_results testitulostus")
-
     def multi_thread(self, url, task, amount):
         """Monisäikeistää halutut tehtävät
 
