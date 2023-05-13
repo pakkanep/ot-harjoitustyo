@@ -18,8 +18,6 @@ classDiagram
         +search_instances(text: str)
     }
     class Operations{
-        -save_results():
-        -get_results():
         -multi_thread(url: str, task: function, amount: int):
         -handle_links(seen: set, url: str):
         +start_query():
