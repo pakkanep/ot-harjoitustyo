@@ -9,15 +9,16 @@ class InfoSeeker:
 
     Attributes:
         successful_add_handles: onnistuneiden työpaikkailmoitusten lkm.
-        failed_add_handles: epäonnistuneiden työpaikkailmoitusten lkm.
-        successful_page_handles: onnistuneiden sivujen käsittelyt, josta linkit löytyvät
+        interruptvalue: keskeyttää tarvittaessa haun suorituksen
+        links = set tietorakenne johon linkit tallennetaan
+        amount_pages: kertoo sivujen määrän metodin for loopille
         amount_ads: työpaikkailmoitusten lukumäärä yhteensä.
         information_dict: Sanakirja, jonka avaimina olevat arvot ovat ohjelmointikielien nimiä,
         joita etsitään sivuilta.
     """
 
     def __init__(self):
-        """Konstruktori alustaa kaikki tarpeelliset muuttujat ja sanakirjan,
+        """Konstruktori alustaa kaikki tarpeelliset muuttujat ja tietorakenteet,
             johon halutut esiintymät tallennetaan"""
         self.successful_add_handles = 0
         self.interruptvalue = False
@@ -46,10 +47,16 @@ class InfoSeeker:
         }
 
     def reset_all(self):
-        """Alustaa kaikki tarvittaessa muuttujat, jotka ovat ohjelman
+        """Alustaa kaikki muuttujat, jotka ovat ohjelman
             suorituksen aikana muuttuneet.
         Args:
-            samat kun ylempänä lueteltu
+            successful_add_handles: onnistuneiden työpaikkailmoitusten lkm.
+            interruptvalue: keskeyttää tarvittaessa haun suorituksen
+            links = set tietorakenne johon linkit tallennetaan
+            amount_pages: kertoo sivujen määrän metodin for loopille
+            amount_ads: työpaikkailmoitusten lukumäärä yhteensä.
+            information_dict: Sanakirja, jonka avaimina olevat arvot ovat ohjelmointikielien nimiä,
+            joita etsitään sivuilta.
         """
         self.information_dict = dict.fromkeys(self.information_dict, 1)
         self.interruptvalue = False
@@ -57,7 +64,6 @@ class InfoSeeker:
         self.amount_ads = 0
         self.amount_pages = 0
         self.successful_add_handles = 0
-        print("Hakutiedot alustettu")
 
     def search_links(self, url):
         """Etsii kaikkien ilmoitusten linkit, jotka sivuilta löytyy ja
@@ -99,9 +105,6 @@ class InfoSeeker:
         Returns:
             tags muutuujan osan josta tarkka luku löytyy tai
             ongelman sattuessa 0.
-
-        Exceptions:
-            mahdollinen ongelma sivun käsittelyssä.
         """
         try:
             result = requests.get(url, timeout=(20, 20))
@@ -129,9 +132,6 @@ class InfoSeeker:
         Returns:
             palauttaa löydettujen sivujen lukumäärän tai
             ongelman sattuessa 0.
-
-        Exceptions:
-            mahdollinen ongelma sivujen lukumäärää etsiessä.
         """
         try:
             result = requests.get(url, timeout=(20, 20))
@@ -144,6 +144,17 @@ class InfoSeeker:
             return 0
 
     def seek_all_pages(self, seen, url):
+        """Hakee ensin muuttujaan sivujen määrän for looppia varten
+            ja sitten ilmoitusten määrän. Sen jälkeen loopissa kutsutaan
+            metodia search_links jossa lisätään kaikki löydetyt linkit set tietorakenteeseen.
+            Jokaisella kieroksella käyty sivu lisätään "set" rakenteeseen jonka avulla
+            tiedetään että tietty sivu on jo käyty läpi. 
+        Args:
+            amount_pages: sivujen lkm jossa ilmoitukset ovat 
+            amount_ads: työpaikkailmoituksien lkm
+            seen: set rakenne joka pitää kirjaa käydyistä sivuista
+        """
+
         self.amount_pages = self.search_amount_of_pages(url)
         self.amount_ads = self.search_amount_of_ads(url)
         for pagenum in range(1, self.amount_pages+1):
@@ -155,6 +166,14 @@ class InfoSeeker:
             self.search_links(url+str(pagenum))
 
     def handle(self, url):
+        """
+        Args:
+            url: linkki nettisivulle
+            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
+            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
+            tags: docin turhaa tietoa suodatettu pois 
+            description: teksti muodossa ainastaan työpaikka kuvaus
+        """
         try:
             result = requests.get(url, timeout=(20, 20))
             doc = BeautifulSoup(result.text, "html.parser")
@@ -167,6 +186,13 @@ class InfoSeeker:
             pass
 
     def search_instances(self, text: str):
+        """Etsii tekstistä kaikki esiintymät jotka sanakirjassa ovat avaimena.
+        Args:
+            check_dict: sanakirja tietorakenne jossa ovat avainsanat
+            joiden esiintymiä halutaan löytää
+            validword = sanakirjan avain joka on muutettu sellaiseen
+            muotoon ettei yhdyssanoja lasketa mukaan
+        """
         check_dict = {
             "Java": 0,
             "Python": 0,
