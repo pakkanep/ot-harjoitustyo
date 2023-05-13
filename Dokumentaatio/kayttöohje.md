@@ -13,7 +13,7 @@ poetry run invoke start
 
 Käynnistyksen jälkeen:
 - Voit käynnistää haun (kesto n. 2min)
-- Haun vaiheesta tulee informaatiota komentoriville kun se on käynnissä.
+- hakutulokset tulevat näkyviin automaattiesti kun haku on valmis.
 - Haun voi keskeyttää komentorivillä painamalla control+c
 - Resetoida tulokset tai katsoa tulokset
 - Tallentaa tulokset (vaiheessa)
