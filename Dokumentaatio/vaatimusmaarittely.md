@@ -20,15 +20,13 @@ joka näyttää lukumäärän jokaisen kielen esiintymästä ilmotuksissa.
 
 - Käyttäjä voi nollata hakutiedot. 
 
-- Hakutulokset voi tallentaa csv tiedostoon, jonka avulla myös vanhojen hakujen tuloksia
-voi halutessa katsella. (vaiheessa)
-
-
 
 ### Kehitysideoita
+- Hakutulokset voi tallentaa csv tiedostoon, jonka avulla myös vanhojen hakujen tuloksia
+voi halutessa katsella.
 
 - Haun suorittamisen aikana käyttöliittymää ei voi käyttää ja kaikki haun aikana tuleva informaatio näkyy komentorivillä.
-Tavoitteena olisi saada reaaliaikaisesti ilmoituksia näkyviin käyttöliittymään sekä painike joka keskeyttää haun. 
+Tavoitteena olisi saada reaaliaikaisesti ilmoituksia näkyviin käyttöliittymään sekä painike joka keskeyttää haun.
 
 
 
