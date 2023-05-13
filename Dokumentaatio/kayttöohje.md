@@ -16,5 +16,4 @@ Käynnistyksen jälkeen:
 - hakutulokset tulevat näkyviin automaattiesti kun haku on valmis.
 - Haun voi keskeyttää komentorivillä painamalla control+c
 - Resetoida tulokset tai katsoa tulokset
-- Tallentaa tulokset (vaiheessa)
-- Katsella hakutuloshistoriaa (vaiheessa)
+
