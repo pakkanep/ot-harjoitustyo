@@ -30,3 +30,4 @@
 - Lisätty käyttöliittymään napit vanhojen hakutuloksien selaamiselle ja tallennukselle. (vaiheessa) 
 - Lisätty luokka Operations
 - lisätty testit Operations luokalle
+- 
