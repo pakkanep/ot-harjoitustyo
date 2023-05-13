@@ -4,8 +4,8 @@ from ui.ui import UI
 
 def main():
     window = Tk()
-    window.title("Job application search")
-    window.geometry("600x600")
+    window.title("Instance search")
+    window.geometry("1000x1000")
 
     userinterface= UI(window)
     userinterface.start()

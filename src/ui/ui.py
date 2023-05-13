@@ -2,7 +2,6 @@ from tkinter import Tk, ttk
 from ui.query_view import QueryView
 from ui.result_view import ResultView
 from services.operations import Operations
-import threading
 
 
 class UI:
@@ -17,9 +16,8 @@ class UI:
     def _hide_current_view(self):
         if self._current_view:
             self._current_view.destroy()
-
         self._current_view = None
-
+    
     def _handle_query(self):
         self._show_query_view()
 
@@ -28,6 +26,7 @@ class UI:
 
     def _start_query(self):
         self._seeker.start_query()
+        self._show_result_view()
 
     def _reset_query_results(self):
         self._seeker.reset_all()
@@ -46,7 +45,6 @@ class UI:
             self._seeker,
             self._save_query_results
         )
-
         self._current_view.pack()
 
     def _show_result_view(self):
@@ -57,5 +55,5 @@ class UI:
             self._handle_query,
             self._seeker
         )
-
         self._current_view.pack()
+

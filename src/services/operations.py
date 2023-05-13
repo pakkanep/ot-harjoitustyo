@@ -1,5 +1,6 @@
-from services.infoseeker import InfoSeeker
 import threading
+from services.infoseeker import InfoSeeker
+
 
 class Operations(InfoSeeker):
     def __init__(self):
@@ -18,13 +19,13 @@ class Operations(InfoSeeker):
         for _ in range(amount):
             if self.interruptvalue:
                 break
-            t = threading.Thread(
+            thread = threading.Thread(
                 target=task,
                 daemon=daemon_value,
                 args=(seen, url)
             )
-            t.start()
-            threads.append(t)
+            thread.start()
+            threads.append(thread)
             daemon_value = True
 
         for thread in threads:
@@ -38,10 +39,8 @@ class Operations(InfoSeeker):
                 break
             if link in seen:
                 continue
-            else:
-                seen.add(link)
-                print(f"Sivuja käsitelty: {len(seen)}/{len(self.links)}")
-                self.handle(link)
+            seen.add(link)
+            self.handle(link)
 
     def start_query(self):
         self.reset_all()

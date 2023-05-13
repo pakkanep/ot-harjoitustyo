@@ -2,8 +2,14 @@ from tkinter import ttk, constants
 
 
 class QueryView:
-    def __init__(self, root, handle_result, start_query,
-                 reset_results, seeker, save_results):
+    def __init__(self,
+                root,
+                handle_result,
+                start_query,
+                reset_results,
+                seeker,
+                save_results):
+
         self._root = root
         self._handle_result = handle_result
         self._start_query = start_query
@@ -46,6 +52,7 @@ class QueryView:
             text="save query results",
             command=self._save_results
         )
+
 
         result_button.grid(row=1, column=0)
         start_button.grid(row=3, column=0)

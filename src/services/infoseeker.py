@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from requests.exceptions import Timeout, ConnectionError
+from requests.exceptions import Timeout
 
 
 class InfoSeeker:
@@ -81,13 +81,10 @@ class InfoSeeker:
                     break
                 site_url = "https://duunitori.fi"+link.get('href')
                 self.links.add(site_url)
-                print(f"Linkkejä haettu: {len(self.links)}/{self.amount_ads}")
+
 
         except (Timeout, IndexError, ConnectionError):
-            if ConnectionError:
-                print("Nettiyhteys puuttuu!")
-            else:
-                print("Ongelma linkkien haussa")
+            pass
 
     def search_amount_of_ads(self, url):
         """Etsii annetun linkin avulla löydettyjen työpaikkailmoitusten
@@ -115,10 +112,6 @@ class InfoSeeker:
             return int(tags[0].b.text)
 
         except (Timeout, IndexError, ConnectionError):
-            if ConnectionError:
-                print("Nettiyhteys puuttuu!")
-            else:
-                print("Ongelma hakemuksien määrän hakemisessa")
             return 0
 
     def search_amount_of_pages(self, url):
@@ -148,10 +141,6 @@ class InfoSeeker:
             return amount
 
         except (Timeout, IndexError, ConnectionError):
-            if ConnectionError:
-                print("Nettiyhteys puuttuu!")
-            else:
-                print("Ongelma sivujen määrän hakemisessa")
             return 0
 
     def seek_all_pages(self, seen, url):
@@ -162,9 +151,8 @@ class InfoSeeker:
                 break
             if pagenum in seen:
                 continue
-            else:
-                seen.add(pagenum)
-                self.search_links(url+str(pagenum))
+            seen.add(pagenum)
+            self.search_links(url+str(pagenum))
 
     def handle(self, url):
         try:
@@ -176,10 +164,7 @@ class InfoSeeker:
             self.successful_add_handles += 1
 
         except (Timeout, IndexError, ConnectionError):
-            if ConnectionError:
-                print("Nettiyhteys puuttuu!")
-            else:
-                print("Ongelma sivun Käsittelyssä")
+            pass
 
     def search_instances(self, text: str):
         check_dict = {
