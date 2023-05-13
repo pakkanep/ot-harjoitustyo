@@ -3,6 +3,9 @@ from services.infoseeker import InfoSeeker
 
 
 class Operations(InfoSeeker):
+    """Perii luokan InfoSeeker ja pääasiallisena tarkoituksena
+        monisäikeistys ja tietokannan luku ja sinne tallennus (vaiheeessa)
+    """
     def __init__(self):
         super().__init__()
 
@@ -13,6 +16,17 @@ class Operations(InfoSeeker):
         print("get_results testitulostus")
 
     def multi_thread(self, url, task, amount):
+        """Monisäikeistää halutut tehtävät
+
+        Args:
+            url: linkki nettisivulle
+            task: mikä funktio halutaan suoritukseen
+            amount: säikeiden määrä
+            daemon_value: kertoo onko säie daemon vai ei
+            seen: pitää kirjaa läpikäydyistä sivuista tai linkeistä
+            threads: lista johon säikeet tallennetaan
+
+        """
         daemon_value = False
         seen = set()
         threads = []
@@ -34,6 +48,12 @@ class Operations(InfoSeeker):
             thread.join()
 
     def handle_links(self, seen, url=None):
+        """Käy loopissa läpi kaikki työpaikkailmoitukset
+
+        Args:
+            seen: pitää kirjaa siitä mitkä linkit on käyty läpi
+            link: linkki joka on set tietorakenteessa links 
+        """
         for link in self.links:
             if self.interruptvalue:
                 break
@@ -43,13 +63,19 @@ class Operations(InfoSeeker):
             self.handle(link)
 
     def start_query(self):
+        """Aloittaa haun, resetoimalla kaikki arvot ja kutsuu
+            multithread funktiota joka hakee eka linkit,
+            jonka jälkeen työpaikkailmoitukset käydään läpi
+
+        Args:
+            url: linkki duunitorin sivuille
+            interruptvalue: boolean joka kertoo jos haku halutaan keskyettää
+        """
         self.reset_all()
         try:
             url = "https://duunitori.fi/tyopaikat/ala/ohjelmointi-ja-ohjelmistokehitys?sivu="
             self.multi_thread(url, self.seek_all_pages, 3)
-            print("Linkit haettu")
             self.multi_thread(url, self.handle_links, 6)
-            print("Haku suoritettu")
         except KeyboardInterrupt:
             self.interruptvalue = True
             print("Haku keskeytetty")
