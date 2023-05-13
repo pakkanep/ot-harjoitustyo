@@ -6,7 +6,7 @@
 tallentaa hakutulokset csv tiedostoon myöhemmin luettavaksi.
 
 ### Release 
-- [Linkki releaseen](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/Viikko5)
+- [Linkki viimeisempään releaseen](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ### Dokumentaatio
 - [Testausdokumentti](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/testaus.md)
