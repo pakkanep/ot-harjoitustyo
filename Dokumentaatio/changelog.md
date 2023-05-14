@@ -20,14 +20,15 @@
 - Lisätty luokka ResultView.
 - Lisätty luokka QueryView.
 ## Viikko 5
-- Lisätty hakutulosten resetointitoiminnallisuus käyttöliittymään
+- Lisätty hakutulosten resetointitoiminnallisuus käyttöliittymään.
 
 ## Viikko 6
-- Lisätty muutama uusi testi
+- Lisätty muutama uusi testi.
 - Edistetty käyttöliittymän toiminnallisuuksia.
 
 ## viikko 7
-- Lisätty käyttöliittymään napit vanhojen hakutuloksien selaamiselle ja tallennukselle. (vaiheessa) 
-- Lisätty luokka Operations
-- lisätty testit Operations luokalle
-- 
+- Lisätty käyttöliittymään napit vanhojen hakutuloksien selaamiselle ja tallennukselle. 
+- Lisätty luokka Operations, jonka pääasiallinen tarkoitus on monisäikeistys.
+- Muutettu vähän InfoSeeker luokkaa yhteensopivaksi säikeistystä varten.
+- lisätty testit Operations luokalle.
+- Poistettu turhat funktiot, jotka olisivat hoitaneet pysyväistallennuksen.
