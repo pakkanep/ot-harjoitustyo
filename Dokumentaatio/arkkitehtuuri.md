@@ -1,4 +1,14 @@
 # Arkkitehtuuri
+
+## Rakenne
+koodin rakenne pakkauskaaviona:
+
+![image](https://github.com/pakkanep/ot-harjoitustyo/assets/118994720/a7b481c7-fb5f-4513-a4cd-138e0f824715)
+
+
+
+
+## Sovelluksen toiminnasta vastaavat luokat sekvenssikaaviona
 ```mermaid
 classDiagram
     class InfoSeeker{
@@ -25,5 +35,34 @@ classDiagram
 
     InfoSeeker <|-- Operations
     
+```
+## Sovelluksen toiminta kuvattuna sekvenssikaaviolla
+```mermaid
+sequenceDiagram
+    participant User
+    participant Operations
+    participant InfoSeeker
+    User->>+Operations: start_query()
+    activate Operations
+    Operations->>+InfoSeeker: reset_all()
+    InfoSeeker-->>-Operations: -
+    alt interruptvalue is False
+        Operations->>+Operations: multi_thread(url, seek_all_pages, 3)
+        activate Operations
+        Operations->>+InfoSeeker: search_links(url)
+        InfoSeeker-->>-Operations: -
+        Operations-->>-Operations: return
+        deactivate Operations
+        Operations->>+Operations: multi_thread(url, handle_links, 6)
+        activate Operations
+        Operations->>+InfoSeeker: handle(link)
+        InfoSeeker-->>-Operations: -
+        Operations-->>-Operations: return
+        deactivate Operations
+        Operations-->>-User: -
+    else interruptvalue is True
+        Operations-->>-User: Haku keskeytetty
+    end
+
 ```
     
