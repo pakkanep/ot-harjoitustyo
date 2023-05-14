@@ -2,12 +2,12 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla käyttäjä voi hakea tietoa siitä mitä ohjelmointikielivaatimuksia/toiveita ohjelmointiin
+- Sovelluksen avulla käyttäjä voi hakea tietoa siitä mitä ohjelmointikielivaatimuksia/toiveita ohjelmointiin
 liittyvissä työpaikkailmoituksissa on listattu Duunitori.fi:n sivuilla. Haun jälkeen ohjelma muodostaa pylväskaavion hakutuloksista.
 
 ## Käyttäjät
 
-Sovelluksella on vain yksi käyttäjämuoto ilman minkäänlaisia rajoitteita.
+- Sovelluksella on vain yksi käyttäjämuoto ilman minkäänlaisia rajoitteita.
 
 ## Toiminnallisuus
 
