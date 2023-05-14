@@ -1,4 +1,5 @@
-# Sovelluksen käyttö
+# Sovelluksen käyttö ja asennus
+Uusimman version lähdekoodin voi hakea viimeisimmästä [releasesta](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/loppupalautus)
 
 Riippuvuudet voi asentaa komennolla:
 ```bash
