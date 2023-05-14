@@ -49,15 +49,8 @@ class InfoSeeker:
     def reset_all(self):
         """Alustaa kaikki muuttujat, jotka ovat ohjelman
             suorituksen aikana muuttuneet.
-        Args:
-            successful_add_handles: onnistuneiden työpaikkailmoitusten lkm.
-            interruptvalue: keskeyttää tarvittaessa haun suorituksen
-            links = set tietorakenne johon linkit tallennetaan
-            amount_pages: kertoo sivujen määrän metodin for loopille
-            amount_ads: työpaikkailmoitusten lukumäärä yhteensä.
-            information_dict: Sanakirja, jonka avaimina olevat arvot ovat ohjelmointikielien nimiä,
-            joita etsitään sivuilta.
         """
+
         self.information_dict = dict.fromkeys(self.information_dict, 1)
         self.interruptvalue = False
         self.links.clear()
@@ -67,17 +60,13 @@ class InfoSeeker:
 
     def search_links(self, url):
         """Etsii kaikkien ilmoitusten linkit, jotka sivuilta löytyy ja
-            lisää ne set tietorakenteeseen
+            lisää ne set tietorakenteeseen.
 
         Args:
-            url: linkki nettisivulle
-            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
-            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-            site_url: doc muuttujan sisällöstä löydetty työpaikkailmoitukseen
-            johtava linkki.
+            url: linkki nettisivulle.
 
         Exceptions:
-            mahdollinen ongelma sivun käsittelyssä
+            mahdollinen ongelma sivun käsittelyssä.
         """
         try:
             result = requests.get(url, timeout=(20, 20))
@@ -98,9 +87,6 @@ class InfoSeeker:
 
         Args:
             url: linkki nettisivulle
-            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin
-            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-            tags: ilmoitusten lukumäärä etsitty html koodista.
 
         Returns:
             tags muutuujan osan josta tarkka luku löytyy tai
@@ -124,10 +110,6 @@ class InfoSeeker:
 
         Args:
             url: linkki nettisivulle
-            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
-            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-            tags: sivujen lukumäärä etsitty html koodista.
-            amount: sivujen tarkka lukumäärä tallennettu.
 
         Returns:
             palauttaa löydettujen sivujen lukumäärän tai
@@ -150,9 +132,8 @@ class InfoSeeker:
             Jokaisella kieroksella käyty sivu lisätään "set" rakenteeseen jonka avulla
             tiedetään että tietty sivu on jo käyty läpi. 
         Args:
-            amount_pages: sivujen lkm jossa ilmoitukset ovat 
-            amount_ads: työpaikkailmoituksien lkm
             seen: set rakenne joka pitää kirjaa käydyistä sivuista
+            url: linkki sivulle
         """
 
         self.amount_pages = self.search_amount_of_pages(url)
@@ -169,10 +150,6 @@ class InfoSeeker:
         """
         Args:
             url: linkki nettisivulle
-            result: requests.get tallentaa linkistä löytyvän nettisivun html koodin.
-            doc: BeautifulSoupin avulla saadaan sisältö läpikäytävään muotoon.
-            tags: docin turhaa tietoa suodatettu pois 
-            description: teksti muodossa ainastaan työpaikka kuvaus
         """
         try:
             result = requests.get(url, timeout=(20, 20))
@@ -188,10 +165,7 @@ class InfoSeeker:
     def search_instances(self, text: str):
         """Etsii tekstistä kaikki esiintymät jotka sanakirjassa ovat avaimena.
         Args:
-            check_dict: sanakirja tietorakenne jossa ovat avainsanat
-            joiden esiintymiä halutaan löytää
-            validword = sanakirjan avain joka on muutettu sellaiseen
-            muotoon ettei yhdyssanoja lasketa mukaan
+            text: merkkijono joka on suodatettu sivun html koodista
         """
         check_dict = {
             "Java": 0,
