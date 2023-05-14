@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from requests.exceptions import Timeout
+from urllib3 import exceptions
 
 
 class InfoSeeker:
@@ -78,7 +78,13 @@ class InfoSeeker:
                 self.links.add(site_url)
 
 
-        except (Timeout, IndexError, ConnectionError):
+        except (requests.exceptions.Timeout,
+                IndexError,
+                requests.exceptions.ConnectionError,
+                exceptions.MaxRetryError,
+                exceptions.NewConnectionError,
+                exceptions.ResponseError
+            ):
             pass
 
     def search_amount_of_ads(self, url):
@@ -100,7 +106,13 @@ class InfoSeeker:
             ))
             return int(tags[0].b.text)
 
-        except (Timeout, IndexError, ConnectionError):
+        except (requests.exceptions.Timeout,
+                IndexError,
+                requests.exceptions.ConnectionError,
+                exceptions.MaxRetryError,
+                exceptions.NewConnectionError,
+                exceptions.ResponseError
+            ):
             return 0
 
     def search_amount_of_pages(self, url):
@@ -122,7 +134,13 @@ class InfoSeeker:
             amount = int(tags[-1].text)
             return amount
 
-        except (Timeout, IndexError, ConnectionError):
+        except (requests.exceptions.Timeout,
+                IndexError,
+                requests.exceptions.ConnectionError,
+                exceptions.MaxRetryError,
+                exceptions.NewConnectionError,
+                exceptions.ResponseError
+            ):
             return 0
 
     def seek_all_pages(self, seen, url):
@@ -159,7 +177,13 @@ class InfoSeeker:
             self.search_instances(description)
             self.successful_add_handles += 1
 
-        except (Timeout, IndexError, ConnectionError):
+        except (requests.exceptions.Timeout,
+                IndexError,
+                requests.exceptions.ConnectionError,
+                exceptions.MaxRetryError,
+                exceptions.NewConnectionError,
+                exceptions.ResponseError
+            ):
             pass
 
     def search_instances(self, text: str):

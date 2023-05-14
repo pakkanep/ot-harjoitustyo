@@ -37,7 +37,7 @@ class Operations(InfoSeeker):
                 break
             thread.join()
 
-    def handle_links(self, seen, url=None):
+    def handle_links(self, seen, url): # pylint: disable=unused-argument
         """Käy loopissa läpi kaikki työpaikkailmoitukset
 
         Args:
@@ -67,4 +67,3 @@ class Operations(InfoSeeker):
             self.multi_thread(url, self.handle_links, 6)
         except KeyboardInterrupt:
             self.interruptvalue = True
-            print("Haku keskeytetty")
