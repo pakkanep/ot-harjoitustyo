@@ -1,5 +1,5 @@
 # Sovelluksen käyttö ja asennus
-Uusimman version lähdekoodin voi hakea viimeisimmästä [releasesta](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/loppupalautus)
+Uusimman version lähdekoodin voi hakea viimeisimmästä [releasesta](https://github.com/pakkanep/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 Ennen käynnistystä riippuvuudet asennetaan projektin juurihakemistossa komennolla:
 ```bash
