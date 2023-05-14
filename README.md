@@ -13,9 +13,7 @@ tallentaa hakutulokset csv tiedostoon myöhemmin luettavaksi.
 
 - [vaatimusmäärittely](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimusmaarittely.md)
 
-- [tuntikirjanpito](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/tuntikirjanpito.md)
-
-- [changelog](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/changelog.md)
+- [Käyttö ja asennusohje](https://github.com/pakkanep/ot-harjoitustyo/blob/master/Dokumentaatio/kaytt%C3%B6ohje.md)
 
 ### Ohjelman asennus ja testaaminen
 Riippuvuudet voi asentaa komennolla:
