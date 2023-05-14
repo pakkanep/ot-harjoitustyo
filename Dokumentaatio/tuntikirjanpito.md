@@ -25,4 +25,5 @@
 | 11.5  | 8      | monisäikeistys tehty, lisätty Operations luokka sekä muutettu InfoSeeker luokkaa hiukan. |
 | 12.5  | 2      | testejä operations luokalle. |
 | 13.5  | 4      | poikkeuksen lisäys, docstring dokumentaation kirjoittelu ja pysyväistallennuksen opettelu |
-| yht   | 74     | |
+| 14.5  | 2      | viimeistely loppupalautusta varten |
+| yht   | 76     | |
